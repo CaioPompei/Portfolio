@@ -4,10 +4,10 @@ export const defaultLang: Lang = "pt";
 
 export const ui = {
   pt: {
-    "site.title": "Caio Pompei — Desenvolvedor de software",
+    "site.title": "Caio Pompei — Engenheiro de software",
     "site.description":
-      "Portfólio de Caio Pompei, desenvolvedor de software.",
-    "site.role": "Desenvolvedor de software",
+      "Portfólio de Caio Pompei, engenheiro de software.",
+    "site.role": "Engenheiro de software",
 
     "nav.skip": "Pular para o conteúdo",
     "nav.work": "Projetos",
@@ -16,7 +16,7 @@ export const ui = {
     "nav.lang": "English",
     "nav.langShort": "EN",
 
-    "hero.intro": "Desenvolvedor de software.",
+    "hero.intro": "Engenheiro de software.",
     "hero.web": "Ver projetos",
     "hero.scroll": "Ir para os projetos",
 
@@ -30,7 +30,7 @@ export const ui = {
 
     "about.title": "Sobre",
     "about.p1":
-      "Sou desenvolvedor. No back-end trabalho com .NET, Go e Python; na web, com JavaScript e Astro.",
+      "Sou engenheiro de software. No back-end trabalho com .NET, Go e Python; na web, com JavaScript e Astro.",
     "about.p2":
       "Começo todo projeto pela arquitetura: defino as partes, como elas conversam e onde ficam os dados. Com essa base pronta, uso IA no dia a dia para prototipar e revisar código, e consigo entregar rápido sem abrir mão da qualidade.",
     "about.tools": "Ferramentas",
@@ -53,10 +53,10 @@ export const ui = {
     "404.home": "Voltar para o início",
   },
   en: {
-    "site.title": "Caio Pompei — Software developer",
+    "site.title": "Caio Pompei — Software engineer",
     "site.description":
-      "Portfolio of Caio Pompei, software developer.",
-    "site.role": "Software developer",
+      "Portfolio of Caio Pompei, software engineer.",
+    "site.role": "Software engineer",
 
     "nav.skip": "Skip to content",
     "nav.work": "Work",
@@ -65,7 +65,7 @@ export const ui = {
     "nav.lang": "Português",
     "nav.langShort": "PT",
 
-    "hero.intro": "Software developer.",
+    "hero.intro": "Software engineer.",
     "hero.web": "See projects",
     "hero.scroll": "Go to the projects",
 
@@ -79,7 +79,7 @@ export const ui = {
 
     "about.title": "About",
     "about.p1":
-      "I'm a developer. On the back end I work with .NET, Go and Python; on the web, with JavaScript and Astro.",
+      "I'm a software engineer. On the back end I work with .NET, Go and Python; on the web, with JavaScript and Astro.",
     "about.p2":
       "I start every project with the architecture: the parts, how they talk to each other and where the data lives. With that in place, I use AI day to day to prototype and review code, so I can ship fast without giving up quality.",
     "about.tools": "Tools",
