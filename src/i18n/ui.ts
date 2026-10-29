@@ -25,6 +25,9 @@ export const ui = {
     "work.view": "Ver projeto",
     "work.code": "Código",
     "work.live": "Site no ar",
+    "work.play": "Jogar",
+    "work.games": "Jogos",
+    "work.web": "Web",
 
     "about.title": "Sobre",
     "about.p1":
@@ -76,6 +79,9 @@ export const ui = {
     "work.view": "View project",
     "work.code": "Code",
     "work.live": "Live site",
+    "work.play": "Play",
+    "work.games": "Games",
+    "work.web": "Web",
 
     "about.title": "About",
     "about.p1":

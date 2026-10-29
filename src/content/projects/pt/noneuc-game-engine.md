@@ -1,11 +1,15 @@
 ---
 title: "NonEucGameEngine"
+group: "games"
 kind: "Engine de jogo não euclidiana"
 year: 2026
 summary: "Uma engine de jogo não euclidiana em Python e OpenGL. O desafio: criar espaços impossíveis, onde portais ligam salas que não estão lado a lado e um portal visto dentro de outro também se abre."
 stack: ["Python", "OpenGL 3.3", "GLSL", "NumPy", "GLFW"]
-cover: "/covers/noneuc-game-engine.svg"
-coverAlt: "Ilustração de portais retangulares encaixados uns dentro dos outros, alternando azul-cobalto e cinza-claro, como um túnel visto em perspectiva."
+cover: "/covers/noneuc-game-engine.webp"
+loop: "/media/noneuc-loop.mp4"
+video: "/media/noneuc-demo.mp4"
+poster: "/media/noneuc-poster.webp"
+coverAlt: "Captura da engine: um corredor longo e escuro visto a partir de uma porta, que por fora parecia levar direto para outra sala."
 repoUrl: "https://github.com/CaioPompei/NonEucGameEngine"
 order: 1
 ---

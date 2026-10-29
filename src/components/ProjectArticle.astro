@@ -12,7 +12,7 @@ interface Props {
 
 const { entry, next, lang } = Astro.props;
 const t = useTranslations(lang);
-const { title, kind, year, summary, stack, cover, coverAlt, repoUrl, liveUrl } = entry.data;
+const { title, kind, year, summary, stack, cover, coverAlt, repoUrl, liveUrl, playUrl, video, poster } = entry.data;
 const showNext = next && cleanSlug(next) !== cleanSlug(entry);
 ---
 
@@ -28,8 +28,9 @@ const showNext = next && cleanSlug(next) !== cleanSlug(entry);
       <div><dt class="muted">{t("project.stack")}</dt><dd>{stack.join(", ")}</dd></div>
     </dl>
 
-    {(repoUrl || liveUrl) && (
+    {(repoUrl || liveUrl || playUrl) && (
       <p class="link-row">
+        {playUrl && <a href={playUrl}>{t("work.play")}</a>}
         {repoUrl && <a href={repoUrl}>{t("work.code")}</a>}
         {liveUrl && <a href={liveUrl}>{t("work.live")}</a>}
       </p>
@@ -37,7 +38,20 @@ const showNext = next && cleanSlug(next) !== cleanSlug(entry);
   </header>
 
   <div class="container">
-    <img class="project__cover" src={cover} alt={coverAlt} width="1600" height="1000" />
+    {video ? (
+      <video
+        class="project__cover"
+        src={video}
+        poster={poster ?? cover}
+        controls
+        muted
+        playsinline
+        preload="metadata"
+        aria-label={coverAlt}
+      />
+    ) : (
+      <img class="project__cover" src={cover} alt={coverAlt} width="1600" height="1000" />
+    )}
   </div>
 
   <div class="container">
@@ -87,6 +101,7 @@ const showNext = next && cleanSlug(next) !== cleanSlug(entry);
     font-weight: 600;
   }
   .project__cover {
+    display: block;
     width: 100%;
     height: auto;
     aspect-ratio: 16 / 10;

@@ -7,7 +7,8 @@ stack: ["JavaScript", "Chart.js", "math.js", "Tailwind CSS"]
 cover: "/covers/xgraph.svg"
 coverAlt: "Ilustração de um plano cartesiano com grade fina e uma curva senoidal azul-cobalto cruzando os eixos."
 repoUrl: "https://github.com/CaioPompei/XGraph"
-order: 3
+order: 6
+draft: true
 ---
 
 Um projeto pequeno, feito para conferir gráficos de funções sem abrir um programa pesado.

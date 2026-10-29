@@ -7,7 +7,8 @@ stack: ["JavaScript", "Chart.js", "math.js", "Tailwind CSS"]
 cover: "/covers/xgraph.svg"
 coverAlt: "Illustration of a Cartesian plane with a fine grid and a cobalt-blue sine curve crossing the axes."
 repoUrl: "https://github.com/CaioPompei/XGraph"
-order: 3
+order: 6
+draft: true
 ---
 
 A small project for checking function graphs without opening a heavy program.

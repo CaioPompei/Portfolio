@@ -8,6 +8,8 @@ const projects = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
+    /** Which list on the home page: "games" or "web". */
+    group: z.enum(["games", "web"]).default("web"),
     /** What it is, in a few words: "Game engine", "Concept website"… */
     kind: z.string(),
     year: z.coerce.number(),
@@ -17,7 +19,14 @@ const projects = defineCollection({
     /** Image path in /public. */
     cover: z.string(),
     coverAlt: z.string(),
+    /** Short muted loop for the home card (in /public). */
+    loop: z.string().optional(),
+    /** Full video for the project page (in /public). */
+    video: z.string().optional(),
+    poster: z.string().optional(),
     liveUrl: z.string().url().optional(),
+    /** Link to play the game (itch.io, web build…). */
+    playUrl: z.string().url().optional(),
     repoUrl: z.string().url().optional(),
     order: z.number().default(0),
     draft: z.boolean().default(false),

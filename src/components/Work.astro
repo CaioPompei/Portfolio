@@ -5,38 +5,90 @@ import { getProjects, cleanSlug } from "@/lib/projects";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const projects = await getProjects(lang);
+
+const groups = [
+  { id: "games", title: t("work.games"), items: projects.filter((p) => p.data.group === "games") },
+  { id: "web", title: t("work.web"), items: projects.filter((p) => p.data.group === "web") },
+].filter((g) => g.items.length > 0);
 ---
 
 <section id="work" class="section container" aria-labelledby="work-title">
   <h2 id="work-title" class="section-title">{t("work.title")}</h2>
 
-  <ol class="work" role="list">
-    {projects.map((p) => {
-      const href = projectPath(lang, cleanSlug(p));
-      const { title, kind, year, summary, stack, cover, repoUrl, liveUrl } = p.data;
-      return (
-        <li class="work__item">
-          <a class="work__cover" href={href} tabindex="-1" aria-hidden="true">
-            <img src={cover} alt="" loading="lazy" decoding="async" width="1600" height="1000" />
-          </a>
-          <div class="work__body">
-            <p class="work__kind muted">{kind}, {year}</p>
-            <h3 class="work__title"><a href={href}>{title}</a></h3>
-            <p class="work__summary">{summary}</p>
-            <p class="work__stack muted">{stack.join(", ")}</p>
-            <p class="link-row">
-              <a href={href}>{t("work.view")}</a>
-              {repoUrl && <a href={repoUrl}>{t("work.code")}</a>}
-              {liveUrl && <a href={liveUrl}>{t("work.live")}</a>}
-            </p>
-          </div>
-        </li>
-      );
-    })}
-  </ol>
+  {groups.map((g) => (
+    <div class="group">
+      <h3 class="group__title" id={`work-${g.id}`}>{g.title}</h3>
+      <ol class="work" role="list" aria-labelledby={`work-${g.id}`}>
+        {g.items.map((p) => {
+          const href = projectPath(lang, cleanSlug(p));
+          const { title, kind, year, summary, stack, cover, loop, repoUrl, liveUrl, playUrl } = p.data;
+          return (
+            <li class="work__item">
+              <a class="work__cover" href={href} tabindex="-1" aria-hidden="true">
+                {loop ? (
+                  <video
+                    class="work__media"
+                    src={loop}
+                    poster={cover}
+                    muted
+                    loop
+                    playsinline
+                    preload="none"
+                    data-autoplay
+                  />
+                ) : (
+                  <img class="work__media" src={cover} alt="" loading="lazy" decoding="async" width="1600" height="1000" />
+                )}
+              </a>
+              <div class="work__body">
+                <p class="work__kind muted">{kind}, {year}</p>
+                <h4 class="work__title"><a href={href}>{title}</a></h4>
+                <p class="work__summary">{summary}</p>
+                <p class="work__stack muted">{stack.join(", ")}</p>
+                <p class="link-row">
+                  <a href={href}>{t("work.view")}</a>
+                  {playUrl && <a href={playUrl}>{t("work.play")}</a>}
+                  {repoUrl && <a href={repoUrl}>{t("work.code")}</a>}
+                  {liveUrl && <a href={liveUrl}>{t("work.live")}</a>}
+                </p>
+              </div>
+            </li>
+          );
+        })}
+      </ol>
+    </div>
+  ))}
 </section>
 
+<script>
+  // Play the looping clips only while visible, and never with reduced motion.
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const vids = document.querySelectorAll<HTMLVideoElement>("video[data-autoplay]");
+  if (!reduce && "IntersectionObserver" in window) {
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        const v = e.target as HTMLVideoElement;
+        if (e.isIntersecting) v.play().catch(() => {});
+        else v.pause();
+      }
+    }, { threshold: 0.35 });
+    vids.forEach((v) => io.observe(v));
+  }
+</script>
+
 <style>
+  .group + .group {
+    margin-top: clamp(4.5rem, 3rem + 5vw, 8rem);
+  }
+  .group__title {
+    font-size: var(--step-1);
+    color: var(--ink-2);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    padding-bottom: 0.9rem;
+    margin-bottom: clamp(2rem, 1.5rem + 2vw, 3rem);
+    border-bottom: 1px solid var(--line);
+  }
   .work {
     list-style: none;
     margin: 0;
@@ -57,7 +109,8 @@ const projects = await getProjects(lang);
     background: var(--paper-2);
     outline-offset: 4px;
   }
-  .work__cover img {
+  .work__media {
+    display: block;
     width: 100%;
     height: auto;
     aspect-ratio: 16 / 10;
@@ -73,8 +126,11 @@ const projects = await getProjects(lang);
     font-size: var(--step--1);
   }
   .work__title {
+    margin: 0;
     font-size: var(--step-3);
+    line-height: 1.08;
     letter-spacing: -0.03em;
+    font-weight: 700;
   }
   .work__title a {
     text-decoration: none;
@@ -82,9 +138,6 @@ const projects = await getProjects(lang);
   .work__title a:hover {
     text-decoration: underline;
     text-decoration-thickness: 2px;
-  }
-  .work__summary {
-    font-size: var(--step-0);
   }
   .work .link-row {
     margin-top: 0.4rem;

@@ -1,11 +1,15 @@
 ---
 title: "NonEucGameEngine"
+group: "games"
 kind: "Non-Euclidean game engine"
 year: 2026
 summary: "A non-Euclidean game engine in Python and OpenGL. The challenge: build impossible spaces, where portals join rooms that aren't side by side and a portal seen inside another one opens up too."
 stack: ["Python", "OpenGL 3.3", "GLSL", "NumPy", "GLFW"]
-cover: "/covers/noneuc-game-engine.svg"
-coverAlt: "Illustration of rectangular portals nested inside one another, alternating cobalt blue and light grey, like a tunnel seen in perspective."
+cover: "/covers/noneuc-game-engine.webp"
+loop: "/media/noneuc-loop.mp4"
+video: "/media/noneuc-demo.mp4"
+poster: "/media/noneuc-poster.webp"
+coverAlt: "Engine capture: a long dark corridor seen from a doorway that, from the other side, seemed to open straight into another room."
 repoUrl: "https://github.com/CaioPompei/NonEucGameEngine"
 order: 1
 ---
