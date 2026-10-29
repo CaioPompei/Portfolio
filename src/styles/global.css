@@ -170,9 +170,16 @@ a:hover {
 .link-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem 1.5rem;
+  gap: 0 1.5rem;
 }
 
 .link-row a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
   font-weight: 600;
+}
+
+section[id] {
+  scroll-margin-top: 4rem;
 }

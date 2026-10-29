@@ -3,80 +3,196 @@ import { getLangFromUrl, useTranslations, projectPath } from "@/i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+// Three real projects, fanned like prints on a desk. Order = back to front.
+const cards = [
+  { slug: "noneuc-game-engine", src: "/covers/noneuc-game-engine.webp", title: "NonEucGameEngine" },
+  { slug: "counting-bullets", src: "/covers/counting-bullets.webp", title: "Counting Bullets" },
+  { slug: "talita-miguel", src: "/covers/talita-miguel.webp", title: "Talita Miguel" },
+];
 ---
 
 <section class="hero">
-  <a class="hero__media" href={projectPath(lang, "noneuc-game-engine")} tabindex="-1" aria-hidden="true">
-    <video
-      src="/media/noneuc-loop.mp4"
-      poster="/media/noneuc-poster.webp"
-      muted
-      loop
-      playsinline
-      preload="auto"
-      data-hero
-    ></video>
-  </a>
-  <p class="visually-hidden">{t("hero.video")}</p>
-  <div class="container hero__text">
-    <h1 class="hero__name">Caio Pompei</h1>
+  <div class="container hero__inner">
+    <h1 class="hero__name">Caio<br />Pompei</h1>
     <p class="hero__intro">{t("hero.intro")}</p>
+    <p class="hero__links">
+      <a class="hero__btn hero__btn--solid" href="#work-web">{t("hero.web")}</a>
+      <a class="hero__btn" href="#work-games">{t("hero.games")}</a>
+    </p>
+    <ul class="fan" role="list">
+      {cards.map((c, i) => (
+        <li class={`fan__card fan__card--${i}`}>
+          <a href={projectPath(lang, c.slug)} aria-label={c.title}>
+            <img src={c.src} alt="" width="1600" height="1000" decoding="async" fetchpriority={i === 2 ? "high" : "auto"} />
+          </a>
+        </li>
+      ))}
+    </ul>
   </div>
+
+  <a class="scroll" href="#work" aria-label={t("hero.scroll")}>
+    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+      <path d="M12 4v15M5 12l7 7 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </a>
 </section>
 
 <style>
+  /* Mobile first: the hero fills the first screen, so the arrow sits at the fold. */
   .hero {
     position: relative;
-    min-height: min(88svh, 52rem);
+    min-height: calc(100svh - 4rem);
     display: grid;
-    align-items: end;
-    overflow: hidden;
-    background: #111418;
-    color: #f1f3f5;
+    align-items: center;
+    padding-block: 2.5rem 6rem;
   }
-  .hero__media {
-    position: absolute;
-    inset: 0;
-  }
-  .hero__media video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: grayscale(0.25) contrast(1.05);
-  }
-  .hero__media::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgb(10 12 16 / 0.92) 0%, rgb(10 12 16 / 0.55) 35%, rgb(10 12 16 / 0) 70%);
-  }
-  .hero__text {
-    position: relative;
-    padding-block: clamp(3rem, 2rem + 6vw, 6rem);
-    pointer-events: none;
+  .hero__inner {
+    display: grid;
+    gap: 1.25rem;
   }
   .hero__name {
-    font-size: var(--step-hero);
+    font-size: clamp(3.6rem, 19vw, 9.5rem);
     font-weight: 800;
-    line-height: 0.88;
-    letter-spacing: -0.05em;
+    line-height: 0.86;
+    letter-spacing: -0.055em;
     margin-left: -0.04em;
-    max-width: 10ch;
   }
   .hero__intro {
-    margin-top: clamp(1rem, 0.75rem + 1vw, 1.5rem);
     font-size: var(--step-2);
-    letter-spacing: -0.01em;
-    color: #c9d0d8;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+    color: var(--ink-2);
+    max-width: 20ch;
+  }
+  .hero__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+  }
+  .hero__btn {
+    display: inline-flex;
+    align-items: center;
+    min-height: 3rem;
+    padding: 0 1.35rem;
+    border: 1.5px solid var(--ink);
+    border-radius: 999px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .hero__btn:hover {
+    color: var(--ink);
+    background: var(--paper-2);
+  }
+  .hero__btn--solid {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .hero__btn--solid:hover {
+    background: var(--cobalt);
+    border-color: var(--cobalt);
+    color: var(--on-cobalt);
+  }
+
+  /* Fanned project covers */
+  .fan {
+    position: relative;
+    list-style: none;
+    margin: 1.5rem 0 0;
+    padding: 0;
+    width: 100%;
+    max-width: 34rem;
+    aspect-ratio: 16 / 12;
+  }
+  .fan__card {
+    position: absolute;
+    width: 78%;
+    transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .fan__card a {
+    display: block;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 2px rgb(23 32 43 / 0.12), 0 18px 40px -12px rgb(23 32 43 / 0.35);
+    outline-offset: 4px;
+  }
+  .fan__card img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+  }
+  .fan__card--0 { left: 0; top: 4%; transform: rotate(-7deg); }
+  .fan__card--1 { right: 0; top: 0; transform: rotate(6deg); }
+  .fan__card--2 { left: 11%; top: 30%; transform: rotate(-1.5deg); }
+  .fan__card:hover,
+  .fan__card:focus-within {
+    z-index: 3;
+  }
+  .fan__card--0:hover, .fan__card--0:focus-within { transform: rotate(-7deg) translateY(-6%); }
+  .fan__card--1:hover, .fan__card--1:focus-within { transform: rotate(6deg) translateY(-6%); }
+  .fan__card--2:hover, .fan__card--2:focus-within { transform: rotate(-1.5deg) translateY(-4%); }
+  @media (prefers-reduced-motion: reduce) {
+    .fan__card { transition: none; }
+  }
+
+  .scroll {
+    position: absolute;
+    left: 50%;
+    bottom: 1.5rem;
+    translate: -50% 0;
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    border: 1.5px solid var(--line);
+    border-radius: 50%;
+    color: var(--ink-2);
+  }
+  .scroll:hover {
+    color: var(--ink);
+    border-color: var(--ink);
+  }
+  .scroll svg {
+    animation: nudge 1.8s ease-in-out infinite;
+  }
+  @keyframes nudge {
+    0%, 100% { transform: translateY(-3px); }
+    50% { transform: translateY(4px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .scroll svg {
+      animation: none;
+    }
+  }
+
+  @media (min-width: 52rem) {
+    .hero {
+      min-height: min(calc(100svh - 4rem), 56rem);
+      padding-block: 4rem 7rem;
+    }
+    .hero__inner {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      column-gap: clamp(2rem, 1rem + 4vw, 5rem);
+      row-gap: 1.75rem;
+      align-items: end;
+    }
+    .hero__name,
+    .hero__intro,
+    .hero__links {
+      grid-column: 1;
+    }
+    .hero__intro {
+      max-width: none;
+    }
+    .fan {
+      grid-column: 2;
+      grid-row: 1 / span 3;
+      align-self: center;
+      justify-self: end;
+      margin: 0;
+    }
   }
 </style>
-
-<script>
-  const v = document.querySelector<HTMLVideoElement>("video[data-hero]");
-  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
-  if (v) {
-    const sync = () => (reduce.matches ? v.pause() : v.play().catch(() => {}));
-    sync();
-    reduce.addEventListener("change", sync);
-  }
-</script>

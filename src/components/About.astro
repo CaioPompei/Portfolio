@@ -39,8 +39,7 @@ const tools = [
   }
   .about__inner {
     display: grid;
-    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-    column-gap: clamp(1.25rem, 0.5rem + 3vw, 3.5rem);
+    row-gap: 2.5rem;
   }
   .about__inner .section-title {
     grid-column: 1 / -1;
@@ -63,7 +62,7 @@ const tools = [
   }
   dl div {
     display: grid;
-    grid-template-columns: 7rem 1fr;
+    grid-template-columns: 6rem 1fr;
     gap: 1rem;
     padding-bottom: 0.9rem;
     border-bottom: 1px solid var(--line);
@@ -71,10 +70,11 @@ const tools = [
   dd {
     margin: 0;
   }
-  @media (max-width: 52rem) {
+  @media (min-width: 52rem) {
     .about__inner {
-      grid-template-columns: 1fr;
-      row-gap: 2.5rem;
+      grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+      column-gap: clamp(1.25rem, 0.5rem + 3vw, 3.5rem);
+      row-gap: 0;
     }
   }
 </style>

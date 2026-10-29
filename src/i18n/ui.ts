@@ -17,7 +17,9 @@ export const ui = {
     "nav.langShort": "EN",
 
     "hero.intro": "Desenvolvedor full stack e de jogos.",
-    "hero.video": "Cena do NonEucGameEngine: uma porta leva direto à sala seguinte, mas o caminho de volta é um corredor de 20 metros.",
+    "hero.web": "Projetos web",
+    "hero.games": "Jogos",
+    "hero.scroll": "Ir para os projetos",
 
     "work.title": "Projetos",
     "work.view": "Ver projeto",
@@ -67,7 +69,9 @@ export const ui = {
     "nav.langShort": "PT",
 
     "hero.intro": "Full stack and game developer.",
-    "hero.video": "Scene from NonEucGameEngine: a door leads straight into the next room, but the way back is a 20-metre corridor.",
+    "hero.web": "Web projects",
+    "hero.games": "Games",
+    "hero.scroll": "Go to the projects",
 
     "work.title": "Work",
     "work.view": "View project",

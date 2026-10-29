@@ -81,6 +81,7 @@ const groups = [
     margin-top: clamp(4.5rem, 3rem + 5vw, 8rem);
   }
   .group__title {
+    scroll-margin-top: 5rem;
     font-size: var(--step-1);
     color: var(--ink-2);
     font-weight: 600;
@@ -98,9 +99,7 @@ const groups = [
   }
   .work__item {
     display: grid;
-    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-    gap: clamp(1.25rem, 0.5rem + 3vw, 3.5rem);
-    align-items: center;
+    gap: 1.25rem;
   }
   .work__cover {
     display: block;
@@ -142,9 +141,11 @@ const groups = [
   .work .link-row {
     margin-top: 0.4rem;
   }
-  @media (max-width: 52rem) {
+  @media (min-width: 52rem) {
     .work__item {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+      gap: clamp(1.25rem, 0.5rem + 3vw, 3.5rem);
+      align-items: center;
     }
   }
 </style>
