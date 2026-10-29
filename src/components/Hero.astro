@@ -6,8 +6,7 @@ const t = useTranslations(lang);
 
 // Three real projects, fanned like prints on a desk. Order = back to front.
 const cards = [
-  { slug: "noneuc-game-engine", src: "/covers/noneuc-game-engine.webp", title: "NonEucGameEngine" },
-  { slug: "counting-bullets", src: "/covers/counting-bullets.webp", title: "Counting Bullets" },
+  { slug: "lamina", src: "/covers/lamina.webp", title: "Lâmina" },
   { slug: "talita-miguel", src: "/covers/talita-miguel.webp", title: "Talita Miguel" },
 ];
 ---
@@ -17,14 +16,13 @@ const cards = [
     <h1 class="hero__name">Caio<br />Pompei</h1>
     <p class="hero__intro">{t("hero.intro")}</p>
     <p class="hero__links">
-      <a class="hero__btn hero__btn--solid" href="#work-web">{t("hero.web")}</a>
-      <a class="hero__btn" href="#work-games">{t("hero.games")}</a>
+      <a class="hero__btn hero__btn--solid" href="#work">{t("hero.web")}</a>
     </p>
     <ul class="fan" role="list">
       {cards.map((c, i) => (
         <li class={`fan__card fan__card--${i}`}>
           <a href={projectPath(lang, c.slug)} aria-label={c.title}>
-            <img src={c.src} alt="" width="1600" height="1000" decoding="async" fetchpriority={i === 2 ? "high" : "auto"} />
+            <img src={c.src} alt="" width="1600" height="1000" decoding="async" fetchpriority={i === cards.length - 1 ? "high" : "auto"} />
           </a>
         </li>
       ))}
@@ -103,7 +101,7 @@ const cards = [
     padding: 0;
     width: 100%;
     max-width: 34rem;
-    aspect-ratio: 16 / 12;
+    aspect-ratio: 16 / 11;
   }
   .fan__card {
     position: absolute;
@@ -124,16 +122,14 @@ const cards = [
     aspect-ratio: 16 / 10;
     object-fit: cover;
   }
-  .fan__card--0 { left: 0; top: 4%; transform: rotate(-7deg); }
-  .fan__card--1 { right: 0; top: 0; transform: rotate(6deg); }
-  .fan__card--2 { left: 11%; top: 30%; transform: rotate(-1.5deg); }
+  .fan__card--0 { right: 0; top: 2%; transform: rotate(5deg); }
+  .fan__card--1 { left: 0; top: 26%; transform: rotate(-3deg); }
   .fan__card:hover,
   .fan__card:focus-within {
     z-index: 3;
   }
-  .fan__card--0:hover, .fan__card--0:focus-within { transform: rotate(-7deg) translateY(-6%); }
-  .fan__card--1:hover, .fan__card--1:focus-within { transform: rotate(6deg) translateY(-6%); }
-  .fan__card--2:hover, .fan__card--2:focus-within { transform: rotate(-1.5deg) translateY(-4%); }
+  .fan__card--0:hover, .fan__card--0:focus-within { transform: rotate(5deg) translateY(-6%); }
+  .fan__card--1:hover, .fan__card--1:focus-within { transform: rotate(-3deg) translateY(-4%); }
   @media (prefers-reduced-motion: reduce) {
     .fan__card { transition: none; }
   }

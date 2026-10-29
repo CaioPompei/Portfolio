@@ -4,10 +4,10 @@ export const defaultLang: Lang = "pt";
 
 export const ui = {
   pt: {
-    "site.title": "Caio Pompei — Engenheiro de software",
+    "site.title": "Caio Pompei — Desenvolvedor de software",
     "site.description":
-      "Portfólio de Caio Pompei, desenvolvedor full stack e de jogos.",
-    "site.role": "Engenheiro de software",
+      "Portfólio de Caio Pompei, desenvolvedor de software.",
+    "site.role": "Desenvolvedor de software",
 
     "nav.skip": "Pular para o conteúdo",
     "nav.work": "Projetos",
@@ -16,9 +16,8 @@ export const ui = {
     "nav.lang": "English",
     "nav.langShort": "EN",
 
-    "hero.intro": "Desenvolvedor full stack e de jogos.",
-    "hero.web": "Projetos web",
-    "hero.games": "Jogos",
+    "hero.intro": "Desenvolvedor de software.",
+    "hero.web": "Ver projetos",
     "hero.scroll": "Ir para os projetos",
 
     "work.title": "Projetos",
@@ -31,11 +30,9 @@ export const ui = {
 
     "about.title": "Sobre",
     "about.p1":
-      "Sou desenvolvedor full stack. No back-end trabalho com .NET, Go e Python; na web, com JavaScript e Astro.",
+      "Sou desenvolvedor. No back-end trabalho com .NET, Go e Python; na web, com JavaScript e Astro.",
     "about.p2":
       "Começo todo projeto pela arquitetura: defino as partes, como elas conversam e onde ficam os dados. Com essa base pronta, uso IA no dia a dia para prototipar e revisar código, e consigo entregar rápido sem abrir mão da qualidade.",
-    "about.p3":
-      "Fora do trabalho, faço jogos. Escrevi uma engine não euclidiana do zero, participei da GMTK Game Jam e quero seguir carreira em desenvolvimento de jogos.",
     "about.tools": "Ferramentas",
     "about.backend": "Back-end",
     "about.frontend": "Front-end",
@@ -56,10 +53,10 @@ export const ui = {
     "404.home": "Voltar para o início",
   },
   en: {
-    "site.title": "Caio Pompei — Software engineer",
+    "site.title": "Caio Pompei — Software developer",
     "site.description":
-      "Portfolio of Caio Pompei, full stack and game developer.",
-    "site.role": "Software engineer",
+      "Portfolio of Caio Pompei, software developer.",
+    "site.role": "Software developer",
 
     "nav.skip": "Skip to content",
     "nav.work": "Work",
@@ -68,9 +65,8 @@ export const ui = {
     "nav.lang": "Português",
     "nav.langShort": "PT",
 
-    "hero.intro": "Full stack and game developer.",
-    "hero.web": "Web projects",
-    "hero.games": "Games",
+    "hero.intro": "Software developer.",
+    "hero.web": "See projects",
     "hero.scroll": "Go to the projects",
 
     "work.title": "Work",
@@ -83,11 +79,9 @@ export const ui = {
 
     "about.title": "About",
     "about.p1":
-      "I'm a full stack developer. On the back end I work with .NET, Go and Python; on the web, with JavaScript and Astro.",
+      "I'm a developer. On the back end I work with .NET, Go and Python; on the web, with JavaScript and Astro.",
     "about.p2":
       "I start every project with the architecture: the parts, how they talk to each other and where the data lives. With that in place, I use AI day to day to prototype and review code, so I can ship fast without giving up quality.",
-    "about.p3":
-      "Outside work, I make games. I wrote a non-Euclidean engine from scratch, took part in the GMTK Game Jam and want to build a career in game development.",
     "about.tools": "Tools",
     "about.backend": "Back-end",
     "about.frontend": "Front-end",

@@ -12,6 +12,7 @@ poster: "/media/noneuc-poster.webp"
 coverAlt: "Engine capture: a long dark corridor seen from a doorway that, from the other side, seemed to open straight into another room."
 repoUrl: "https://github.com/CaioPompei/NonEucGameEngine"
 order: 3
+draft: true
 ---
 
 The challenge was to build impossible spaces: a door that shows a room that isn't behind it, a corridor that loops back to its start, a place that wouldn't fit on an ordinary map. To get there I wrote a non-Euclidean game engine from scratch, small but complete, with lighting, physics, levels and a menu.

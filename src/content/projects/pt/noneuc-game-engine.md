@@ -12,6 +12,7 @@ poster: "/media/noneuc-poster.webp"
 coverAlt: "Captura da engine: um corredor longo e escuro visto a partir de uma porta, que por fora parecia levar direto para outra sala."
 repoUrl: "https://github.com/CaioPompei/NonEucGameEngine"
 order: 3
+draft: true
 ---
 
 O desafio era criar espaços impossíveis: uma porta que mostra uma sala que não está atrás dela, um corredor que volta ao começo, um lugar que não caberia num mapa comum. Para isso, escrevi do zero uma engine de jogo não euclidiana, pequena mas completa, com iluminação, física, fases e um menu.

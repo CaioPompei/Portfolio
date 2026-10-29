@@ -17,8 +17,8 @@ const groups = [
 
   {groups.map((g) => (
     <div class="group">
-      <h3 class="group__title" id={`work-${g.id}`}>{g.title}</h3>
-      <ol class="work" role="list" aria-labelledby={`work-${g.id}`}>
+      {groups.length > 1 && <h3 class="group__title" id={`work-${g.id}`}>{g.title}</h3>}
+      <ol class="work" role="list" aria-labelledby={groups.length > 1 ? `work-${g.id}` : "work-title"}>
         {g.items.map((p) => {
           const href = projectPath(lang, cleanSlug(p));
           const { title, kind, year, summary, stack, cover, loop, repoUrl, liveUrl, playUrl } = p.data;

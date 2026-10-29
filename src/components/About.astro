@@ -6,7 +6,6 @@ const t = useTranslations(getLangFromUrl(Astro.url));
 const tools = [
   { label: t("about.backend"), items: "C#, .NET, Go, Python" },
   { label: t("about.frontend"), items: "JavaScript, HTML, CSS, Astro" },
-  { label: t("about.graphics"), items: "OpenGL, GLSL, NumPy" },
   { label: t("about.data"), items: "MySQL, JSON, CSV" },
 ];
 ---
@@ -17,7 +16,6 @@ const tools = [
     <div class="about__text">
       <p>{t("about.p1")}</p>
       <p>{t("about.p2")}</p>
-      <p>{t("about.p3")}</p>
     </div>
     <div class="about__tools">
       <h3>{t("about.tools")}</h3>

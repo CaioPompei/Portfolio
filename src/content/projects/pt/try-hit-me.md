@@ -12,6 +12,7 @@ video: "/media/try-hit-me.mp4"
 poster: "/media/try-hit-me-poster.webp"
 repoUrl: "https://github.com/CaioPompei/Try_hit_me"
 order: 5
+draft: true
 ---
 
 > **Projeto em equipe**, feito em três pessoas.

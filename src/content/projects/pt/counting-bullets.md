@@ -13,6 +13,7 @@ poster: "/media/counting-bullets-poster.webp"
 playUrl: "https://moissa.itch.io/counting-bullet"
 repoUrl: "https://github.com/JoaoMoissa/COUNTING-BULLETS"
 order: 4
+draft: true
 ---
 
 > **Projeto em equipe**, feito em quatro pessoas para a GMTK Game Jam 2026.
