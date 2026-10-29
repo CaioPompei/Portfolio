@@ -7,7 +7,6 @@ const t = useTranslations(getLangFromUrl(Astro.url));
 
 <section id="contact" class="section container contact" aria-labelledby="contact-title">
   <h2 id="contact-title" class="section-title">{t("contact.title")}</h2>
-  <p class="muted">{t("contact.body")}</p>
   <a class="contact__email" href={`mailto:${site.email}`}>{site.email}</a>
   <p class="link-row">
     <a href={site.social.github}>GitHub</a>

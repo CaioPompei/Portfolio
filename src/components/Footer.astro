@@ -1,15 +1,12 @@
 ---
-import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 import { site } from "@/site";
 
-const t = useTranslations(getLangFromUrl(Astro.url));
 const year = new Date().getFullYear();
 ---
 
 <footer class="footer">
   <div class="container footer__inner">
     <p>© {year} {site.author}</p>
-    <p class="muted">{t("footer.made")}</p>
   </div>
 </footer>
 

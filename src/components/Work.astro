@@ -7,8 +7,8 @@ const t = useTranslations(lang);
 const projects = await getProjects(lang);
 
 const groups = [
-  { id: "games", title: t("work.games"), items: projects.filter((p) => p.data.group === "games") },
   { id: "web", title: t("work.web"), items: projects.filter((p) => p.data.group === "web") },
+  { id: "games", title: t("work.games"), items: projects.filter((p) => p.data.group === "games") },
 ].filter((g) => g.items.length > 0);
 ---
 

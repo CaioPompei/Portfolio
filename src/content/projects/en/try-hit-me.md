@@ -11,7 +11,7 @@ loop: "/media/try-hit-me.mp4"
 video: "/media/try-hit-me.mp4"
 poster: "/media/try-hit-me-poster.webp"
 repoUrl: "https://github.com/CaioPompei/Try_hit_me"
-order: 3
+order: 5
 ---
 
 > **Team project**, made by a team of three.

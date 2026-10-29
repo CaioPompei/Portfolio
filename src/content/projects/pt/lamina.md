@@ -8,7 +8,7 @@ cover: "/covers/lamina.webp"
 coverAlt: "Página inicial do site Lâmina: interior escuro de barbearia com cadeiras e luminárias pendentes, o título 'Corte de precisão. Cuidado de alto padrão.' e o índice de unidades 01, 02 e 03 em dourado."
 liveUrl: "https://lamina-xi.vercel.app"
 repoUrl: "https://github.com/CaioPompei/Lamina"
-order: 5
+order: 2
 ---
 
 > **Projeto conceito.** A marca, as unidades e os dados são fictícios.

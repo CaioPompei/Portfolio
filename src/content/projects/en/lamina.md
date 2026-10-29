@@ -8,7 +8,7 @@ cover: "/covers/lamina.webp"
 coverAlt: "Lâmina home page: a dark barbershop interior with chairs and pendant lights, the headline 'Corte de precisão. Cuidado de alto padrão.' and the 01, 02, 03 location index in brass."
 liveUrl: "https://lamina-xi.vercel.app"
 repoUrl: "https://github.com/CaioPompei/Lamina"
-order: 5
+order: 2
 ---
 
 > **Concept project.** The brand, locations and data are fictional.

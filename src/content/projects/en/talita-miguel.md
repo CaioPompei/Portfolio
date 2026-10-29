@@ -8,7 +8,7 @@ stack: ["Astro", "CSS"]
 cover: "/covers/talita-miguel.webp"
 coverAlt: "Talita Miguel home page: dark background, the headline 'Sua marca já tem o que mostrar. Falta ser vista do jeito certo.' and three portraits fanned out."
 liveUrl: "https://talita-miguel.vercel.app"
-order: 4
+order: 1
 ---
 
 A portfolio site for a photographer and videomaker. The home page introduces her work with three fanned-out portraits and leads to a page for each service: photography, video, storymaking and social media management.
