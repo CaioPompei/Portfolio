@@ -1,8 +1,8 @@
 ---
 title: "NonEucGameEngine"
-kind: "Game engine"
+kind: "Non-Euclidean game engine"
 year: 2026
-summary: "A Python and OpenGL engine built to draw spaces that ignore ordinary geometry: portals connect different rooms, and what you see inside a portal can have portals too."
+summary: "A non-Euclidean game engine in Python and OpenGL. The challenge: build impossible spaces, where portals join rooms that aren't side by side and a portal seen inside another one opens up too."
 stack: ["Python", "OpenGL 3.3", "GLSL", "NumPy", "GLFW"]
 cover: "/covers/noneuc-game-engine.svg"
 coverAlt: "Illustration of rectangular portals nested inside one another, alternating cobalt blue and light grey, like a tunnel seen in perspective."
@@ -10,7 +10,7 @@ repoUrl: "https://github.com/CaioPompei/NonEucGameEngine"
 order: 1
 ---
 
-The question that started it: how do you draw a door that shows a room that isn't behind it? The answer became a small but complete engine, with lighting, physics, levels and a menu.
+The challenge was to build impossible spaces: a door that shows a room that isn't behind it, a corridor that loops back to its start, a place that wouldn't fit on an ordinary map. To get there I wrote a non-Euclidean game engine from scratch, small but complete, with lighting, physics, levels and a menu.
 
 ## Stencil-buffer portals
 

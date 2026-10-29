@@ -1,8 +1,8 @@
 ---
 title: "NonEucGameEngine"
-kind: "Engine de jogo"
+kind: "Engine de jogo não euclidiana"
 year: 2026
-summary: "Uma engine em Python e OpenGL feita para desenhar espaços que não obedecem a geometria comum: portais ligam salas diferentes e o que aparece dentro de um portal também pode ter portais."
+summary: "Uma engine de jogo não euclidiana em Python e OpenGL. O desafio: criar espaços impossíveis, onde portais ligam salas que não estão lado a lado e um portal visto dentro de outro também se abre."
 stack: ["Python", "OpenGL 3.3", "GLSL", "NumPy", "GLFW"]
 cover: "/covers/noneuc-game-engine.svg"
 coverAlt: "Ilustração de portais retangulares encaixados uns dentro dos outros, alternando azul-cobalto e cinza-claro, como um túnel visto em perspectiva."
@@ -10,7 +10,7 @@ repoUrl: "https://github.com/CaioPompei/NonEucGameEngine"
 order: 1
 ---
 
-A pergunta que começou tudo: como se desenha uma porta que mostra outra sala, que não está atrás dela? A resposta virou uma engine pequena, mas completa, com iluminação, física, fases e um menu.
+O desafio era criar espaços impossíveis: uma porta que mostra uma sala que não está atrás dela, um corredor que volta ao começo, um lugar que não caberia num mapa comum. Para isso, escrevi do zero uma engine de jogo não euclidiana, pequena mas completa, com iluminação, física, fases e um menu.
 
 ## Portais com stencil buffer
 
