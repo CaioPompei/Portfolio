@@ -1,0 +1,9 @@
+# Normaliza quebras de linha para LF no repositório (evita ruído no Windows).
+* text=auto eol=lf
+
+# Arquivos binários — não mexer.
+*.png binary
+*.jpg binary
+*.webp binary
+*.woff2 binary
+*.ico binary

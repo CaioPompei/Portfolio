@@ -1,0 +1,34 @@
+---
+import Base from "@/layouts/Base.astro";
+import { useTranslations, homePath } from "@/i18n/utils";
+
+const t = useTranslations("pt");
+---
+
+<Base title={`${t("404.title")} — Caio Pompei`} noindex>
+  <section class="container notfound">
+    <h1>{t("404.title")}</h1>
+    <p class="muted">{t("404.body")}</p>
+    <a href={homePath("pt")}>{t("404.home")}</a>
+  </section>
+</Base>
+
+<style>
+  .notfound {
+    min-height: 60vh;
+    display: grid;
+    align-content: center;
+    gap: 1.25rem;
+    padding-block: 4rem;
+  }
+  h1 {
+    font-size: var(--step-hero);
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    line-height: 0.9;
+  }
+  a {
+    font-weight: 600;
+    width: fit-content;
+  }
+</style>

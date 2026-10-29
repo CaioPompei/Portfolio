@@ -1,0 +1,73 @@
+---
+import { getLangFromUrl, useTranslations, homePath, sectionPath, alternatePath, otherLang } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const other = otherLang(lang);
+---
+
+<header class="header">
+  <div class="container header__inner">
+    <a class="header__name" href={homePath(lang)}>Caio Pompei</a>
+    <nav aria-label={lang === "pt" ? "Principal" : "Main"}>
+      <ul class="header__nav">
+        <li><a href={sectionPath(lang, "work")}>{t("nav.work")}</a></li>
+        <li><a href={sectionPath(lang, "about")}>{t("nav.about")}</a></li>
+        <li><a href={sectionPath(lang, "contact")}>{t("nav.contact")}</a></li>
+        <li>
+          <a
+            class="header__lang"
+            href={alternatePath(Astro.url, other)}
+            hreflang={other === "pt" ? "pt-BR" : "en"}
+            lang={other === "pt" ? "pt-BR" : "en"}
+            aria-label={t("nav.lang")}
+          >{t("nav.langShort")}</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    border-bottom: 1px solid var(--line);
+  }
+  .header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 4rem;
+  }
+  .header__name {
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .header__nav {
+    display: flex;
+    gap: clamp(0.9rem, 0.5rem + 1.5vw, 2rem);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: var(--step--1);
+  }
+  .header__nav a {
+    text-decoration: none;
+    color: var(--ink-2);
+  }
+  .header__nav a:hover {
+    color: var(--ink);
+  }
+  .header__lang {
+    font-weight: 600;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 0.15rem 0.45rem;
+  }
+  @media (max-width: 26rem) {
+    .header__nav li:nth-child(2) {
+      display: none;
+    }
+  }
+</style>

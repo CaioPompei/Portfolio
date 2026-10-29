@@ -1,0 +1,33 @@
+---
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+import { site } from "@/site";
+
+const t = useTranslations(getLangFromUrl(Astro.url));
+---
+
+<section id="contact" class="section container contact" aria-labelledby="contact-title">
+  <h2 id="contact-title" class="section-title">{t("contact.title")}</h2>
+  <p class="muted">{t("contact.body")}</p>
+  <a class="contact__email" href={`mailto:${site.email}`}>{site.email}</a>
+  <p class="link-row">
+    <a href={site.social.github}>GitHub</a>
+    <a href={site.social.linkedin}>LinkedIn</a>
+  </p>
+</section>
+
+<style>
+  .contact .section-title {
+    margin-bottom: 1rem;
+  }
+  .contact__email {
+    display: inline-block;
+    margin: 0.75rem 0 2rem;
+    font-size: clamp(1.6rem, 0.8rem + 4.2vw, 4.5rem);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 1.05;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.15em;
+    overflow-wrap: anywhere;
+  }
+</style>

@@ -1,0 +1,144 @@
+---
+import type { Project } from "@/lib/projects";
+import { cleanSlug } from "@/lib/projects";
+import { useTranslations, sectionPath, projectPath } from "@/i18n/utils";
+import type { Lang } from "@/i18n/ui";
+
+interface Props {
+  entry: Project;
+  next: Project | null;
+  lang: Lang;
+}
+
+const { entry, next, lang } = Astro.props;
+const t = useTranslations(lang);
+const { title, kind, year, summary, stack, cover, coverAlt, repoUrl, liveUrl } = entry.data;
+const showNext = next && cleanSlug(next) !== cleanSlug(entry);
+---
+
+<article class="project">
+  <header class="container project__head">
+    <a class="project__back muted" href={sectionPath(lang, "work")}>{t("project.back")}</a>
+    <h1 class="project__title">{title}</h1>
+    <p class="project__summary">{summary}</p>
+
+    <dl class="project__meta">
+      <div><dt class="muted">{t("project.kind")}</dt><dd>{kind}</dd></div>
+      <div><dt class="muted">{t("project.year")}</dt><dd>{year}</dd></div>
+      <div><dt class="muted">{t("project.stack")}</dt><dd>{stack.join(", ")}</dd></div>
+    </dl>
+
+    {(repoUrl || liveUrl) && (
+      <p class="link-row">
+        {repoUrl && <a href={repoUrl}>{t("work.code")}</a>}
+        {liveUrl && <a href={liveUrl}>{t("work.live")}</a>}
+      </p>
+    )}
+  </header>
+
+  <div class="container">
+    <img class="project__cover" src={cover} alt={coverAlt} width="1600" height="1000" />
+  </div>
+
+  <div class="container">
+    <div class="prose">
+      <slot />
+    </div>
+  </div>
+
+  {showNext && (
+    <nav class="container project__next" aria-label={t("project.next")}>
+      <span class="muted">{t("project.next")}</span>
+      <a href={projectPath(lang, cleanSlug(next!))}>{next!.data.title}</a>
+    </nav>
+  )}
+</article>
+
+<style>
+  .project__head {
+    display: grid;
+    gap: 1.25rem;
+    padding-block: clamp(2.5rem, 2rem + 4vw, 5rem) clamp(2rem, 1.5rem + 2vw, 3rem);
+  }
+  .project__back {
+    font-size: var(--step--1);
+    width: fit-content;
+  }
+  .project__title {
+    font-size: clamp(2.6rem, 1rem + 6vw, 6rem);
+    font-weight: 800;
+    letter-spacing: -0.045em;
+    line-height: 0.95;
+  }
+  .project__summary {
+    max-width: var(--measure);
+    font-size: var(--step-1);
+    color: var(--ink-2);
+  }
+  .project__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 3rem;
+    margin: 0.5rem 0 0;
+    font-size: var(--step--1);
+  }
+  .project__meta dd {
+    margin: 0.15rem 0 0;
+    font-weight: 600;
+  }
+  .project__cover {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    border-radius: var(--radius);
+    background: var(--paper-2);
+  }
+  .prose {
+    max-width: var(--measure);
+    padding-block: clamp(2.5rem, 2rem + 3vw, 4.5rem);
+    margin-left: clamp(0rem, -6rem + 20vw, 14rem);
+  }
+  .prose :global(h2) {
+    font-size: var(--step-2);
+    margin: 2.5rem 0 0.75rem;
+  }
+  .prose :global(p),
+  .prose :global(ul) {
+    margin: 0 0 1.1rem;
+  }
+  .prose :global(ul) {
+    padding-left: 1.2rem;
+  }
+  .prose :global(li) {
+    margin-bottom: 0.45rem;
+  }
+  .prose :global(code) {
+    font-size: 0.9em;
+    background: var(--paper-2);
+    padding: 0.1em 0.35em;
+    border-radius: 4px;
+  }
+  .prose :global(blockquote) {
+    margin: 0 0 1.5rem;
+    padding: 0.9rem 1.1rem;
+    border-left: 3px solid var(--cobalt);
+    background: var(--paper-2);
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+  .prose :global(blockquote p) {
+    margin: 0;
+  }
+  .project__next {
+    display: grid;
+    gap: 0.3rem;
+    padding-block: 3rem 5rem;
+    border-top: 1px solid var(--line);
+  }
+  .project__next a {
+    font-size: var(--step-3);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    width: fit-content;
+  }
+</style>

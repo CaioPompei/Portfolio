@@ -1,0 +1,28 @@
+---
+import type { GetStaticPaths } from "astro";
+import Base from "@/layouts/Base.astro";
+import ProjectArticle from "@/components/ProjectArticle.astro";
+import { getProjects, cleanSlug } from "@/lib/projects";
+
+export const getStaticPaths = (async () => {
+  const projects = await getProjects("pt");
+  return projects.map((entry, i) => ({
+    params: { slug: cleanSlug(entry) },
+    props: { entry, next: projects[(i + 1) % projects.length] ?? null },
+  }));
+}) satisfies GetStaticPaths;
+
+const { entry, next } = Astro.props;
+const { Content } = await entry.render();
+const { title, summary, cover } = entry.data;
+---
+
+<Base
+  title={`${title} — Caio Pompei`}
+  description={summary}
+  image={cover.endsWith(".svg") ? "/og.png" : cover}
+>
+  <ProjectArticle entry={entry} next={next} lang="pt">
+    <Content />
+  </ProjectArticle>
+</Base>

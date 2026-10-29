@@ -1,0 +1,97 @@
+---
+import { getLangFromUrl, useTranslations, projectPath } from "@/i18n/utils";
+import { getProjects, cleanSlug } from "@/lib/projects";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const projects = await getProjects(lang);
+---
+
+<section id="work" class="section container" aria-labelledby="work-title">
+  <h2 id="work-title" class="section-title">{t("work.title")}</h2>
+
+  <ol class="work" role="list">
+    {projects.map((p) => {
+      const href = projectPath(lang, cleanSlug(p));
+      const { title, kind, year, summary, stack, cover, repoUrl, liveUrl } = p.data;
+      return (
+        <li class="work__item">
+          <a class="work__cover" href={href} tabindex="-1" aria-hidden="true">
+            <img src={cover} alt="" loading="lazy" decoding="async" width="1600" height="1000" />
+          </a>
+          <div class="work__body">
+            <p class="work__kind muted">{kind}, {year}</p>
+            <h3 class="work__title"><a href={href}>{title}</a></h3>
+            <p class="work__summary">{summary}</p>
+            <p class="work__stack muted">{stack.join(", ")}</p>
+            <p class="link-row">
+              <a href={href}>{t("work.view")}</a>
+              {repoUrl && <a href={repoUrl}>{t("work.code")}</a>}
+              {liveUrl && <a href={liveUrl}>{t("work.live")}</a>}
+            </p>
+          </div>
+        </li>
+      );
+    })}
+  </ol>
+</section>
+
+<style>
+  .work {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: clamp(3.5rem, 2.5rem + 4vw, 6rem);
+  }
+  .work__item {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: clamp(1.25rem, 0.5rem + 3vw, 3.5rem);
+    align-items: center;
+  }
+  .work__cover {
+    display: block;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--paper-2);
+    outline-offset: 4px;
+  }
+  .work__cover img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+  }
+  .work__body {
+    display: grid;
+    gap: 0.75rem;
+    max-width: var(--measure);
+  }
+  .work__kind,
+  .work__stack {
+    font-size: var(--step--1);
+  }
+  .work__title {
+    font-size: var(--step-3);
+    letter-spacing: -0.03em;
+  }
+  .work__title a {
+    text-decoration: none;
+  }
+  .work__title a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+  }
+  .work__summary {
+    font-size: var(--step-0);
+  }
+  .work .link-row {
+    margin-top: 0.4rem;
+  }
+  @media (max-width: 52rem) {
+    .work__item {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

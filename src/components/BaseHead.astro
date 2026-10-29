@@ -1,0 +1,59 @@
+---
+import { getLangFromUrl, useTranslations, alternatePath } from "@/i18n/utils";
+import { site } from "@/site";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  noindex?: boolean;
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const {
+  title = t("site.title"),
+  description = t("site.description"),
+  image = "/og.png",
+  noindex = false,
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL(image, Astro.site);
+const ptHref = new URL(alternatePath(Astro.url, "pt"), Astro.site);
+const enHref = new URL(alternatePath(Astro.url, "en"), Astro.site);
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: site.author,
+  url: site.url,
+  jobTitle: t("site.role"),
+  sameAs: Object.values(site.social).filter(Boolean),
+};
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+<link rel="alternate" hreflang="pt-BR" href={ptHref} />
+<link rel="alternate" hreflang="en" href={enHref} />
+<link rel="alternate" hreflang="x-default" href={ptHref} />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="sitemap" href="/sitemap.xml" />
+<meta name="theme-color" content="#e7eaee" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#141a22" media="(prefers-color-scheme: dark)" />
+{noindex && <meta name="robots" content="noindex" />}
+
+<meta property="og:type" content="website" />
+<meta property="og:locale" content={lang === "pt" ? "pt_BR" : "en_US"} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={ogImage} />
+<meta name="twitter:card" content="summary_large_image" />
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

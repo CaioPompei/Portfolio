@@ -1,0 +1,17 @@
+{
+  "name": "caio-pompei-portfolio",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@fontsource-variable/schibsted-grotesk": "^5.1.0",
+    "astro": "^4.16.18"
+  }
+}
