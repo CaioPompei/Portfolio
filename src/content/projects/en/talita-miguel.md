@@ -7,7 +7,7 @@ summary: "Website for a photographer and videomaker, with pages for photography,
 stack: ["Astro", "CSS"]
 cover: "/covers/talita-miguel.webp"
 coverAlt: "Talita Miguel home page: dark background, the headline 'Sua marca já tem o que mostrar. Falta ser vista do jeito certo.' and three portraits fanned out."
-liveUrl: "https://talita-miguel.vercel.app"
+liveUrl: "https://bytalitamiguel.com.br"
 order: 1
 ---
 
