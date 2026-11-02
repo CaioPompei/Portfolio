@@ -7,7 +7,7 @@ summary: "Site de uma fotógrafa e videomaker, com páginas para fotografia, ví
 stack: ["Astro", "CSS"]
 cover: "/covers/talita-miguel.webp"
 coverAlt: "Página inicial do site Talita Miguel: fundo escuro, título 'Sua marca já tem o que mostrar. Falta ser vista do jeito certo.' e três retratos sobrepostos em leque."
-liveUrl: "https://bytalitamiguel.com.br"
+liveUrl: "https://www.bytalitamiguel.com.br"
 order: 1
 ---
 
